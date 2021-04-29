@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Example from '@/components/Example'
 import TodoPage from '@/components/TodoPage'
+import MemberJoinPage from '@/components/MemberJoinPage'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path:'/todos',
       name:'TodoPage',
       component: TodoPage
+    },
+    {
+      path:'/join',
+      name:'MemberJoinPage',
+      component: MemberJoinPage
     }
   ]
 })

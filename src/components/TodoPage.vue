@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   methods: {
     deleteTodo(i) {
@@ -56,7 +57,6 @@ export default {
         this.name = null;
       }
     },
-    getTodos() {},
   },
   data() {
     return {
