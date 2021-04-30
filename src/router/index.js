@@ -1,24 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Example from '@/components/Example'
 import TodoPage from '@/components/TodoPage'
 import MemberJoinPage from '@/components/MemberJoinPage'
+import LoginPage from '@/components/LoginPage'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path:'/example',
-      name:'Example',
-      component: Example
-    },
     {
       path:'/todos',
       name:'TodoPage',
@@ -28,6 +17,11 @@ export default new Router({
       path:'/join',
       name:'MemberJoinPage',
       component: MemberJoinPage
+    },
+    {
+      path:'/login',
+      name:'LoginPage',
+      component: LoginPage
     }
   ]
 })
