@@ -23,5 +23,6 @@ export default new Router({
       name:'LoginPage',
       component: LoginPage
     }
-  ]
+  ],
+  mode:"history"
 })
