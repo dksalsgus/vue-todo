@@ -1,6 +1,6 @@
 <template>
 <div>
-  <form>
+  <form @submit.prevent="onSubmit">
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Id</label>
       <input
@@ -37,7 +37,7 @@
         class="form-control"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
-        v-model="member.memberEamil"
+        v-model="member.memberEmail"
       />
     </div>
     <div class="mb-3">
@@ -98,7 +98,7 @@ export default {
         .post("http://localhost:8080/member", this.member)
         .then((res) => {
           console.log(res.data);
-          this.onReset();
+          location.href='/login'
         })
         .catch((e) => {
           alert("회원가입 실패");

@@ -33,16 +33,18 @@
 
 <script>
 import axios from "axios";
+import {store} from '../store/store'
 export default {
   methods: {
     createTodo(todo) {
       axios
         .post("http://localhost:8080/todo", todo)
         .then((res) => {
+          console.log('Todo 생성 성공');
           console.log(res.data);
         })
         .catch((e) => {
-          alert("실패");
+          alert("Todo 생성 실패");
           console.log(e);
         });
     },

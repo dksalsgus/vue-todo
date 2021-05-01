@@ -1,9 +1,10 @@
 <template>
 <div>
-  <form>
+  <form @submit.prevent="onSubmit">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Id</label>
       <input
+      name="memberId"
         type="text"
         class="form-control"
         id="memberId"
@@ -13,6 +14,7 @@
     <div class="mb-3">
       <label for="memberPw" class="form-label">Password</label>
       <input
+      name="memberPw"
         type="password"
         class="form-control"
         id="memberPw"
@@ -27,6 +29,7 @@
 </template>
 <script>
 import axios from "axios";
+import { store } from '../store/store';
 export default {
   data() {
     return {
@@ -41,9 +44,12 @@ export default {
       axios
         .post("http://localhost:8080/login", member)
         .then((res) => {
+          console.log(member)
+          store.commit('setMemberId',member.memberId)
+          console.log(store.state.member)
+          console.log(res.data);
           alert('로그인 성공')
           location.href = "http://localhost:3000/todos";
-          console.log(res.data);
         })
         .catch((e) => {
           alert("로그인 실패");
