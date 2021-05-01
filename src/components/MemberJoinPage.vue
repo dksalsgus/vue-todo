@@ -1,4 +1,5 @@
 <template>
+<div>
   <form>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Id</label>
@@ -67,6 +68,7 @@
       Reset
     </button>
   </form>
+</div>
 </template>
 
 <script>

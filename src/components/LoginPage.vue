@@ -1,4 +1,5 @@
 <template>
+<div>
   <form>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Id</label>
@@ -22,6 +23,7 @@
       Login
     </button>
   </form>
+  </div>
 </template>
 <script>
 import axios from "axios";
@@ -39,11 +41,12 @@ export default {
       axios
         .post("http://localhost:8080/login", member)
         .then((res) => {
-          location.href = "http://localhost:3000/#/todos";
+          alert('로그인 성공')
+          location.href = "http://localhost:3000/todos";
           console.log(res.data);
         })
         .catch((e) => {
-          alert("실패");
+          alert("로그인 실패");
           console.log(e);
         });
     },
