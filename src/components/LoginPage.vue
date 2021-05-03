@@ -30,26 +30,34 @@
 <script>
 import axios from "axios";
 import { store } from '../store/store';
+
+const storage = window.sessionStorage;
 export default {
   data() {
-    return {
-      member: {
-        memberId: '',
-        memberPw: '',
-      },
-    };
+    return{
+      member:{
+        memberId:'',
+        memberPw:'',
+      }
+    }
   },
   methods: {
     onSubmit() {
       let frm = new FormData()
       frm.append('memberId',this.member.memberId)
-      frm.append('memberId',this.member.memberPw)
+      frm.append('memberPw',this.member.memberPw)
       axios
         .post("http://localhost:8080/login", frm)
         .then((res) => {
           console.log(res.data)
-          store.commit('setMemberId',this.member.memberId)
-          console.log('test',store.state.member)
+          storage.setItem('jwt-auth=token',res.data)
+          store.commit('setMember',{
+            memberId:this.member.memberId,
+            token:res.data
+          })
+          console.log(store.state)
+          // store.commit('setMemberId',this.member.memberId)
+          // console.log('test',store.state.member)
           // location.href = "http://localhost:3000/todos";
         })
         .catch((e) => {

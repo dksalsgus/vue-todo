@@ -7,11 +7,15 @@ export const store = new Vuex.Store({
     state:{
         member:{
             memberId:'',
+            token:''
         }
     },
     mutations:{
-        setMemberId(state,memberId){
-            state.member.memberId = memberId
+        setMember(state,payload){
+            state.member={
+                memberId:payload.memberId,
+                token:payload.token
+            }
         }
     }
 });

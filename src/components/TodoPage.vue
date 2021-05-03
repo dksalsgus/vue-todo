@@ -49,9 +49,9 @@ export default {
         });
     },
     getTodos() {
-      console.log('membertest',this.todo.member)
+      console.log(store.getters)
       axios
-        .get("http://localhost:8080/todos", member)
+        .get("http://localhost:8080/"+store.state.member.memberId/"todos")
         .then((res) => {
           todos = res.data;
           console.log(todos);
@@ -63,10 +63,8 @@ export default {
     },
   },
   data() {
-    console.log('storeMember',store.state.member)
     return {
       todo: {
-        // memberId: store.state.member,
         todoTitle: '',
         todoContent: '',
         todoKind: '',
