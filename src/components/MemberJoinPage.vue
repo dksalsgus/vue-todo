@@ -61,7 +61,7 @@
       />
     </div>
 
-    <button type="submit" class="btn btn-primary" @click="onSubmit()">
+    <button type="submit" class="btn btn-primary" >
       Submit
     </button>
     <button type="reset" class="btn btn-primary" @click="onReset()">

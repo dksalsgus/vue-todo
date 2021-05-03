@@ -49,6 +49,7 @@ export default {
         });
     },
     getTodos() {
+      console.log('membertest',this.todo.member)
       axios
         .get("http://localhost:8080/todos", member)
         .then((res) => {
@@ -62,18 +63,18 @@ export default {
     },
   },
   data() {
+    console.log('storeMember',store.state.member)
     return {
       todo: {
-        member: this.member,
-        todoTitle: this.todoTitle,
-        todoContent: this.todoContent,
-        todoKind: this.todoKind,
+        // memberId: store.state.member,
+        todoTitle: '',
+        todoContent: '',
+        todoKind: '',
       },
     };
   },
   mounted() {
     this.getTodos();
-    console.log("Component mounted.");
   },
 };
 </script>
