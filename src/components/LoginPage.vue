@@ -1,6 +1,6 @@
 <template>
 <div>
-  <form @submit.prevent="onSubmit">
+  <form v-on:submit.prevent="onSubmit">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Id</label>
       <input
@@ -21,7 +21,7 @@
         v-model="member.memberPw"
       />
     </div>
-    <button type="submit" class="btn btn-primary" @click="onSubmit()">
+    <button type="submit" class="btn btn-primary" >
       Login
     </button>
   </form>
@@ -34,22 +34,23 @@ export default {
   data() {
     return {
       member: {
-        memberId: this.memberId,
-        memberPw: this.memberPw,
+        memberId: '',
+        memberPw: '',
       },
     };
   },
   methods: {
-    onSubmit(member) {
+    onSubmit() {
+      let frm = new FormData()
+      frm.append('memberId',this.member.memberId)
+      frm.append('memberId',this.member.memberPw)
       axios
-        .post("http://localhost:8080/login", member)
+        .post("http://localhost:8080/login", frm)
         .then((res) => {
-          console.log(member)
-          store.commit('setMemberId',member.memberId)
-          console.log(store.state.member)
-          console.log(res.data);
-          alert('로그인 성공')
-          location.href = "http://localhost:3000/todos";
+          console.log(res.data)
+          store.commit('setMemberId',this.member.memberId)
+          console.log('test',store.state.member)
+          // location.href = "http://localhost:3000/todos";
         })
         .catch((e) => {
           alert("로그인 실패");
