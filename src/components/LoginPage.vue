@@ -47,7 +47,7 @@ export default {
       frm.append('memberId',this.member.memberId)
       frm.append('memberPw',this.member.memberPw)
       axios
-        .post("http://localhost:8080/login", frm)
+        .post("http://localhost:8080/loginPost", frm)
         .then((res) => {
           console.log(res.data)
           storage.setItem('jwt-auth=token',res.data)
