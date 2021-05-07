@@ -24,6 +24,10 @@
     <button type="submit" class="btn btn-primary" >
       Login
     </button>
+    
+    <button type="button" class="btn btn-primary" @click="moveJoin">
+      Join
+    </button>
   </form>
   </div>
 </template>
@@ -65,6 +69,9 @@ export default {
           console.log(e);
         });
     },
+    moveJoin(){
+      location.href='/join'
+    }
   },
 };
 </script>
