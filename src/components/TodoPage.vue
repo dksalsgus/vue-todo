@@ -3,8 +3,8 @@
     <h2>Todo List</h2>
     <div class="mb-3">
       <select id="disabledSelect" class="form-select" v-model="todo.todoKind">
-        <option value="할일">할일</option>
-        <option selected="selected" value="진행중">진행중</option>
+        <option value="할일" selected>할일</option>
+        <option  value="진행중">진행중</option>
         <option value="완료">완료</option>
       </select>
     </div>
@@ -19,21 +19,25 @@
       <textarea
         class="form-control"
         placeholder="내용"
+        style="resize:none"
         v-model="todo.todoContent"
       >
       </textarea>
-      <span class="input-group-btn">
+      
+    </div>
+    <span class="input-group-btn">
         <button class="btn btn-default" type="button" @click="createTodo(todo)">
           추가
         </button>
+        <button class="btn btn-default" type="button" >
+          리셋
+        </button>
       </span>
-    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import {store} from '../store/store'
 export default {
   methods: {
     createTodo(todo) {
@@ -73,7 +77,7 @@ export default {
     };
   },
   mounted() {
-    this.getTodos();
+    // this.getTodos();
   },
 };
 </script>
