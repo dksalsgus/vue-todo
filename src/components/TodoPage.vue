@@ -49,9 +49,12 @@ export default {
         });
     },
     getTodos() {
-      console.log(store.getters)
+      console.log(store.state.member.token)
       axios
-        .get("http://localhost:8080/"+store.state.member.memberId/"todos")
+        .get("http://localhost:8080/todos",
+        {headers:{
+          'x-auth-token':store.state.member.token
+        }})
         .then((res) => {
           todos = res.data;
           console.log(todos);

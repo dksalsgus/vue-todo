@@ -43,17 +43,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      let frm = new FormData()
-      frm.append('memberId',this.member.memberId)
-      frm.append('memberPw',this.member.memberPw)
       axios
-        .post("http://localhost:8080/login", frm)
+        .post("http://localhost:8080/loginPost", {memberId:this.member.memberId,memberPw:this.member.memberPw})
         .then((res) => {
           console.log(res.data)
-          storage.setItem('jwt-auth=token',res.data)
           store.commit('setMember',{
             memberId:this.member.memberId,
-            token:res.data
+            token:res.data.token
           })
           console.log(store.state)
           // store.commit('setMemberId',this.member.memberId)
