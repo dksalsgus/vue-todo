@@ -49,15 +49,13 @@ export default {
         });
     },
     getTodos() {
-      console.log(store.state.member.token)
       axios
         .get("http://localhost:8080/todos",
         {headers:{
-          'x-auth-token':store.state.member.token
+          'x-auth-token':localStorage.getItem("x-auth-token")
         }})
         .then((res) => {
-          todos = res.data;
-          console.log(todos);
+          console.log(res.data);
         })
         .catch((e) => {
           alert("get 실패");

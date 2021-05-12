@@ -33,7 +33,6 @@
 </template>
 <script>
 import axios from "axios";
-import { store } from '../store/store';
 
 const storage = window.sessionStorage;
 export default {
@@ -51,14 +50,12 @@ export default {
         .post("http://localhost:8080/loginPost", {memberId:this.member.memberId,memberPw:this.member.memberPw})
         .then((res) => {
           console.log(res.data)
-          store.commit('setMember',{
+          localStorage.setItem("x-auth-token",res.data.token)
+          this.$store.commit('setMember',{
             memberId:this.member.memberId,
             token:res.data.token
           })
-          console.log(store.state)
-          // store.commit('setMemberId',this.member.memberId)
-          // console.log('test',store.state.member)
-          // location.href = "http://localhost:3000/todos";
+          console.log(this.$store.state)
         })
         .catch((e) => {
           alert("로그인 실패");
