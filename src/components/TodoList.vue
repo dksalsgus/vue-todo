@@ -1,6 +1,6 @@
 <template>
 <div>
-    <li v-for="item in todos">{{item}}</li>
+    <li v-for="item in todos" v-bind:key="item">{{item}}</li>
 </div>
 </template>
 
