@@ -42,30 +42,26 @@ export default {
   methods: {
     createTodo(todo) {
       axios
-        .post("http://localhost:8080/todo", todo)
+        .post("http://localhost:8080/todo", todo,{
+          headers:{
+            'x-auth-token':localStorage.getItem("x-auth-token")
+          }
+        })
         .then((res) => {
           console.log('Todo 생성 성공');
           console.log(res.data);
+          this.resetTodo();
         })
         .catch((e) => {
           alert("Todo 생성 실패");
           console.log(e);
         });
     },
-    getTodos() {
-      axios
-        .get("http://localhost:8080/todos",
-        {headers:{
-          'x-auth-token':localStorage.getItem("x-auth-token")
-        }})
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((e) => {
-          alert("get 실패");
-          console.log(e);
-        });
-    },
+    resetTodo(){
+      this.todo.todoTitle= ''
+      this.todo.todoContent= ''
+      this.todo.todoKind= ''
+    }
   },
   data() {
     return {
@@ -77,7 +73,6 @@ export default {
     };
   },
   mounted() {
-    // this.getTodos();
   },
 };
 </script>

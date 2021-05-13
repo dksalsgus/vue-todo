@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import TodoPage from '@/components/TodoPage'
+import TodoList from '@/components/TodoList'
 import MemberJoinPage from '@/components/MemberJoinPage'
 import LoginPage from '@/components/LoginPage'
 
@@ -13,9 +14,14 @@ export default new Router({
       redirect:'/login'
     },
     {
-      path:'/todos',
+      path:'/todo',
       name:'TodoPage',
       component: TodoPage
+    },
+    {
+      path:'/todos',
+      name:'TodoList',
+      component: TodoList
     },
     {
       path:'/join',
