@@ -1,6 +1,6 @@
 <template>
 <div>
-<todopage-com></todopage-com>
+<todopage-com @toDoCreate="todoCreate"></todopage-com>
     <table class="table table-sm">
   <thead>
     <tr>
@@ -12,8 +12,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr v-for="(item,index) in todos" v-bind:key="item">
-      <td>{{index}}</td>
+    <tr v-for="(item,index) in todos" v-bind:key="index">
+      <td>{{index+1}}</td>
       <td>{{item.todoTitle}}</td>
       <td>{{item.todoContent}}</td>
       <td>{{item.todoKind}}</td>
@@ -26,11 +26,13 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
 
 export default {
     data(){
         return{
-            todos:[]
+            todos:[
+            ]
         }
     },
     mounted(){
@@ -38,6 +40,9 @@ export default {
     },
     methods:{
         getTodos() {
+          this.$on('getToDo',function(){
+            console.log
+          })
             axios
                 .get("http://localhost:8080/todos",
                 {headers:{
@@ -60,6 +65,10 @@ export default {
                 .catch((e)=> {
                     console.log(e)
                 })
+            },
+            todoCreate(todo){
+              console.log("넘어온 todo 확인",todo)
+              this.todos.push(todo)
             }
     }
 }

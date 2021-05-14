@@ -14,7 +14,7 @@
         class="form-control"
         placeholder="할일을 입력하세요"
         v-model="todo.todoTitle"
-        v-on:keyup.enter="createTodo(todo)"
+        v-on:keyup.enter="createTodo(this.todo)"
       />
       <textarea
         class="form-control"
@@ -49,7 +49,13 @@ export default {
         })
         .then((res) => {
           console.log('Todo 생성 성공');
-          console.log(res.data);
+          this.$emit('toDoCreate',{
+            todo:{
+              todoTitle:this.todo.todoTitle,
+              todoContent:this.todo.todoContent,
+              todoKind:this.todo.todoKind
+            }
+          })
           this.resetTodo();
         })
         .catch((e) => {
