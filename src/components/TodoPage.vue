@@ -32,6 +32,9 @@
         <button class="btn btn-default" type="button" >
           리셋
         </button>
+        <button class="btn btn-default" type="button" @click="moveList()" >
+          리스트
+        </button>
       </span>
   </div>
 </template>
@@ -61,6 +64,9 @@ export default {
       this.todo.todoTitle= ''
       this.todo.todoContent= ''
       this.todo.todoKind= ''
+    },
+    moveList(){
+      location.href='/todos'
     }
   },
   data() {

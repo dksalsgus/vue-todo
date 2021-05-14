@@ -49,16 +49,11 @@ export default {
       axios
         .post("http://localhost:8080/loginPost", {memberId:this.member.memberId,memberPw:this.member.memberPw})
         .then((res) => {
-          console.log(res.data)
           localStorage.setItem("x-auth-token",res.data.token)
-          this.$store.commit('setMember',{
-            memberId:this.member.memberId,
-            token:res.data.token
-          })
-          console.log(this.$store.state)
+          location.href='/todos'
         })
         .catch((e) => {
-          alert("로그인 실패");
+          alert("아이디와 비밀번호를 확인해주세요");
           console.log(e);
         });
     },
