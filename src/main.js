@@ -4,9 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import {store} from './store/store'
+import TodoPage from './components/TodoPage.vue'
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */
+
+Vue.component('todopage-com',TodoPage)
 new Vue({
   el: '#app',
   router,

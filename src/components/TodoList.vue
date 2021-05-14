@@ -1,5 +1,6 @@
 <template>
 <div>
+<todopage-com></todopage-com>
     <table class="table table-sm">
   <thead>
     <tr>
@@ -20,15 +21,12 @@
     </tr>
   </tbody>
 </table>
-
-<a name="" id="" class="btn btn-primary" href="/todo" role="button">
-    Todo 생성
-</a>
 </div>
 </template>
 
 <script>
 import axios from 'axios'
+
 export default {
     data(){
         return{
