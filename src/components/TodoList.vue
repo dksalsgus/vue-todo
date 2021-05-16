@@ -4,11 +4,11 @@
     <table class="table table-sm">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">No</th>
       <th scope="col">Title</th>
       <th scope="col">Content</th>
       <th scope="col">Kind</th>
-      <th scope="col"></th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +26,6 @@
 
 <script>
 import axios from 'axios'
-import Vue from 'vue'
 
 export default {
     data(){
